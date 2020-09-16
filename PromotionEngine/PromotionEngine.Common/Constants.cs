@@ -7,6 +7,18 @@
     /// </summary>
     public class Constants
     {
+        #region Language
 
+        /// <summary>
+        /// Contains constants for Promotion Tyoe.
+        /// </summary>
+        public enum PromotionType
+        { 
+            QuantityPromotion,
+            PercentagePromotion,
+            RelatedProductPromotion
+        }
+
+        #endregion Language  
     }
 }

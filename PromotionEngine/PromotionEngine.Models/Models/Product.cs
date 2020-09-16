@@ -15,9 +15,19 @@ namespace PromotionEngine.Models
         public int Id { get; set; }
 
         /// <summary>
+        /// Gets or Sets the Name.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or Sets the Quantity.
         /// </summary>
         public int Quantity { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the Quantity.
+        /// </summary>
+        public double Price { get; set; }
 
         #endregion Properties
     }
