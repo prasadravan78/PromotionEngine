@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "vAsvmGGSKvRdKeJ78ARZHEMXG4axzAXqkIiUFVt7sYbG+4RJkm4g2qd6zaMTMOseejtKPMCxGNnUPNGJhLPjGA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ravan\\Documents\\Learnings\\Dot Net Core\\Code\\PromotionEngine\\PromotionEngine\\PromotionEngine.Common\\PromotionEngine.Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ravan\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}
