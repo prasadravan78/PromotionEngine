@@ -39,25 +39,25 @@ namespace PromotionEngine.DomainServices.Tests
 
             products.Add(new Product {
                 Id= 1,
-                Quantity = 5,
+                Quantity = 1,
             });
 
             products.Add(new Product
             {
-                Id = 1,
-                Quantity = 5,
+                Id = 2,
+                Quantity = 1,
             });
 
             products.Add(new Product
             {
-                Id = 1,
-                Quantity = 5,
+                Id = 3,
+                Quantity = 1,
             });
 
             products.Add(new Product
             {
-                Id = 1,
-                Quantity = 5,
+                Id = 4,
+                Quantity = 0,
             });
 
             Assert.AreEqual(100, _productService.GetTotalProductPrice(products));

@@ -4,6 +4,7 @@
     using PromotionEngine.Models;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
     /// <summary>
@@ -50,6 +51,61 @@
         public double GetTotalProductPrice(List<Product> products)
         {
             double totalPrice = 0.0;
+            var quantityPromotions = GetQuantityPromotions();
+            var percentagePromotions = GetPercentagePromotions();
+            var relatedProductPromotions = GetRelatedProductPromotions();
+            var productList = GetProducts();
+
+            foreach (var product in products)
+            {
+                var originalProduct = productList.Where(k => k.Id == product.Id).FirstOrDefault();
+                if (quantityPromotions.Select(k => k.ProductId).ToList().Contains(product.Id))
+                {
+                    var quantityPromotion = quantityPromotions.Where(k => k.ProductId == product.Id).FirstOrDefault();
+                    totalPrice += product.Quantity / quantityPromotion.PromotionQunatity * quantityPromotion.PromotionPrice;
+                    totalPrice += product.Quantity % quantityPromotion.PromotionQunatity * originalProduct.Price;
+                }
+                else if (percentagePromotions.Select(k => k.ProductId).ToList().Contains(product.Id))
+                {
+
+                }
+                else if (relatedProductPromotions.Select(k => k.ProductId).ToList().Contains(product.Id))
+                {
+                    var relatedProductPromotion = relatedProductPromotions.Where(k => k.ProductId == product.Id).FirstOrDefault();
+                    if (products.Select(k => k.Id).ToList().Contains(relatedProductPromotion.RelatedProductId))
+                    {
+                        var productQuantity = product.Quantity;
+                        var relatedProduct = products.Where(k => k.Id == relatedProductPromotion.RelatedProductId).FirstOrDefault();
+
+                        if (relatedProduct.Quantity > 0)
+                        {
+                            if (productQuantity > relatedProduct.Quantity)
+                            {
+                                totalPrice += relatedProduct.Quantity * relatedProductPromotion.PromotionPrice;
+                                totalPrice += (productQuantity - relatedProduct.Quantity) * originalProduct.Price;
+                            }
+                            else if (productQuantity < relatedProduct.Quantity)
+                            {
+                                var relatedOriginalProduct = productList.Where(k => k.Id == relatedProductPromotion.RelatedProductId).FirstOrDefault();
+                                totalPrice += productQuantity * relatedProductPromotion.PromotionPrice;
+                                totalPrice += (relatedProduct.Quantity - productQuantity) * relatedOriginalProduct.Price;
+                            }
+                            else
+                            {
+                                totalPrice += productQuantity * relatedProductPromotion.PromotionPrice;
+                            }
+                        }
+                        else
+                        {
+                            totalPrice += product.Quantity * originalProduct.Price;
+                        }                        
+                    }
+                    //else
+                    //{
+                    //    totalPrice += product.Quantity * originalProduct.Price;
+                    //}
+                }
+            }
 
             return totalPrice;
         }
@@ -75,21 +131,21 @@
 
             products.Add(new Product
             {
-                Id = 1,
+                Id = 2,
                 Name = "B",
                 Price = 30
             });
 
             products.Add(new Product
             {
-                Id = 1,
+                Id = 3,
                 Name = "C",
                 Price = 20
             });
 
             products.Add(new Product
             {
-                Id = 1,
+                Id = 4,
                 Name = "D",
                 Price = 15
             });

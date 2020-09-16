@@ -98,3 +98,5 @@ C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEn
 C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.DomainServices.Tests\obj\Debug\netcoreapp3.1\PromotionEngine.DomainServices.Tests.dll
 C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.DomainServices.Tests\obj\Debug\netcoreapp3.1\PromotionEngine.DomainServices.Tests.pdb
 C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.DomainServices.Tests\obj\Debug\netcoreapp3.1\PromotionEngine.DomainServices.Tests.genruntimeconfig.cache
+C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.DomainServices.Tests\bin\Debug\netcoreapp3.1\PromotionEngine.Common.dll
+C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.DomainServices.Tests\bin\Debug\netcoreapp3.1\PromotionEngine.Common.pdb

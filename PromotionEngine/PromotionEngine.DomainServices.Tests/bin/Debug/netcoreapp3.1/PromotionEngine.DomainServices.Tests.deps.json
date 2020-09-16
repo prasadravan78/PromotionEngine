@@ -867,8 +867,14 @@
           }
         }
       },
+      "PromotionEngine.Common/1.0.0": {
+        "runtime": {
+          "PromotionEngine.Common.dll": {}
+        }
+      },
       "PromotionEngine.DomainServices/1.0.0": {
         "dependencies": {
+          "PromotionEngine.Common": "1.0.0",
           "PromotionEngine.Models": "1.0.0"
         },
         "runtime": {
@@ -1328,6 +1334,11 @@
       "sha512": "sha512-A/uxsWi/Ifzkmd4ArTLISMbfFs6XpRPsXZonrIqyTY70xi8t+mDtvSM5Os0RqyRDobjMBwIDHDL4NOIbkDwf7A==",
       "path": "system.xml.xpath.xmldocument/4.3.0",
       "hashPath": "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
+    },
+    "PromotionEngine.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "PromotionEngine.DomainServices/1.0.0": {
       "type": "project",

@@ -4,9 +4,12 @@
 
 @model PromotionEngine.Web.ViewModels.IndexViewModel
 
+@Html.AntiForgeryToken()
+
 <div class="container">
-    <div style="color: red">Add products and click on Get Price button to check promotion price.</div>
+    <div class="row offset-1" style="color: red">Add products and click on Get Price button to check promotion price.</div>
 </div>
+
 <div class="container">
     @if (Model != null)
     {
@@ -15,21 +18,25 @@
         {
             foreach (var product in Model.Products)
             {
-                <div class="row">
+                <div class="row productRow">
                     <div class="col-md-1 offset-2">
                         @product.Name
                     </div>
                     <div class="col-md-4">
-                        <input class="form-control" type="number" data-id="@product.Id" />
+                        <input class="form-control productQuantity" type="number" data-id="@product.Id" />
                     </div>
                 </div>
             }
-            <div>
+            <div class="row">
                 <div class="col-md-6 offset-3">
                     <button id="getTotalPrice" class="btn btn-primary">Get Price</button>
                 </div>
+            </div>
+            <div class="row totalPriceDiv offset-1" style="color:green">                
             </div>
         }
     }
 </div>
 
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/homeIndex.js"></script>
