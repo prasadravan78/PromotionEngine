@@ -15,7 +15,7 @@
         public int PromotionQunatity { get; set; }
 
         /// <summary>
-        /// Gets or Sets the Price.
+        /// Gets or Sets the PromotionPrice.
         /// </summary>
         public double PromotionPrice { get; set; }
 
