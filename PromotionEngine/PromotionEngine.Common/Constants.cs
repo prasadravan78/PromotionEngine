@@ -7,7 +7,7 @@
     /// </summary>
     public class Constants
     {
-        #region Language
+        #region PromotionType
 
         /// <summary>
         /// Contains constants for Promotion Tyoe.
@@ -19,6 +19,6 @@
             RelatedProductPromotion
         }
 
-        #endregion Language  
+        #endregion PromotionType  
     }
 }

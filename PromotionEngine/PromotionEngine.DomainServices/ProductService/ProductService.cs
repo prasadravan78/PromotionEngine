@@ -51,91 +51,119 @@
         public double GetTotalProductPrice(List<Product> products)
         {
             double totalPrice = 0.0;
-            var quantityPromotions = GetQuantityPromotions();
-            var percentagePromotions = GetPercentagePromotions();
-            var relatedProductPromotions = GetRelatedProductPromotions();
+            var productPromotions = GetProductPromotions();
             var productList = GetProducts();
 
-            foreach (var product in products)
+            if (products != null &&
+                productList != null)
             {
-                var originalProduct = productList.Where(k => k.Id == product.Id).FirstOrDefault();
-                if (quantityPromotions.Select(k => k.ProductId).ToList().Contains(product.Id))
+                if (productPromotions != null)
                 {
-                    // Gets price for quantity Promotion.
-                    var quantityPromotion = quantityPromotions.Where(k => k.ProductId == product.Id).FirstOrDefault();
+                    var quantityPromotions = productPromotions
+                                         .Where(k => k.PromotionTypeId == (int)Constants.PromotionType.QuantityPromotion)
+                                         .ToList();
+                    var percentagePromotions = productPromotions
+                                               .Where(k => k.PromotionTypeId == (int)Constants.PromotionType.QuantityPromotion)
+                                               .ToList(); ;
+                    var relatedProductPromotions = productPromotions
+                                                   .Where(k => k.PromotionTypeId == (int)Constants.PromotionType.RelatedProductPromotion)
+                                                   .ToList();
 
-                    if (product.Quantity > 0)
+                    foreach (var product in products)
                     {
-                        totalPrice += product.Quantity / quantityPromotion.PromotionQunatity * quantityPromotion.PromotionPrice;
-                        totalPrice += product.Quantity % quantityPromotion.PromotionQunatity * originalProduct.Price;
-                    }                    
-                }
-                else if (percentagePromotions.Select(k => k.ProductId).ToList().Contains(product.Id))
-                {
-                    // Gets price for percentage promotion.
-                    var percentagePromotion = percentagePromotions.Where(k => k.ProductId == product.Id).FirstOrDefault();
-
-                    if (product.Quantity > 0)
-                    {
-                        totalPrice += (product.Quantity / percentagePromotion.PromotionQunatity) * (100 + percentagePromotion.Percentage) / 100;
-                        totalPrice += (product.Quantity % percentagePromotion.PromotionQunatity) * originalProduct.Price;
-                    }
-                }
-                else if (relatedProductPromotions.Select(k => k.ProductId).ToList().Contains(product.Id))
-                {
-                    // Gets price for product relation promotion.
-                    var relatedProductPromotion = relatedProductPromotions.Where(k => k.ProductId == product.Id).FirstOrDefault();
-                    var relatedOriginalProduct = productList.Where(k => k.Id == relatedProductPromotion.RelatedProductId).FirstOrDefault();
-
-                    if (products.Select(k => k.Id).ToList().Contains(relatedProductPromotion.RelatedProductId))
-                    {
-                        var productQuantity = product.Quantity;
-                        var relatedProduct = products.Where(k => k.Id == relatedProductPromotion.RelatedProductId).FirstOrDefault();
-
-                        if (productQuantity > 0)
+                        var originalProduct = productList.Where(k => k.Id == product.Id).FirstOrDefault();
+                        if (quantityPromotions.Select(k => k.ProductId).ToList().Contains(product.Id))
                         {
-                            if (relatedProduct != null &&
-                                relatedProduct.Quantity > 0)
+                            // Gets price for quantity Promotion.
+                            var quantityPromotion = quantityPromotions.Where(k => k.ProductId == product.Id).FirstOrDefault();
+
+                            if (product.Quantity > 0)
                             {
-                                if (productQuantity > relatedProduct.Quantity)
+                                totalPrice += product.Quantity / quantityPromotion.PromotionQunatity * quantityPromotion.PromotionPrice;
+                                totalPrice += product.Quantity % quantityPromotion.PromotionQunatity * originalProduct.Price;
+                            }
+                        }
+                        else if (percentagePromotions.Select(k => k.ProductId).ToList().Contains(product.Id))
+                        {
+                            // Gets price for percentage promotion.
+                            var percentagePromotion = percentagePromotions.Where(k => k.ProductId == product.Id).FirstOrDefault();
+
+                            if (product.Quantity > 0)
+                            {
+                                totalPrice += (product.Quantity / percentagePromotion.PromotionQunatity) * (100 + percentagePromotion.Percentage) / 100;
+                                totalPrice += (product.Quantity % percentagePromotion.PromotionQunatity) * originalProduct.Price;
+                            }
+                        }
+                        else if (relatedProductPromotions.Select(k => k.ProductId).ToList().Contains(product.Id))
+                        {
+                            // Gets price for product relation promotion.
+                            var relatedProductPromotion = relatedProductPromotions.Where(k => k.ProductId == product.Id).FirstOrDefault();
+                            var relatedOriginalProduct = productList.Where(k => k.Id == relatedProductPromotion.RelatedProductId).FirstOrDefault();
+
+                            if (products.Select(k => k.Id).ToList().Contains(relatedProductPromotion.RelatedProductId))
+                            {
+                                var productQuantity = product.Quantity;
+                                var relatedProduct = products.Where(k => k.Id == relatedProductPromotion.RelatedProductId).FirstOrDefault();
+
+                                if (productQuantity > 0)
                                 {
-                                    totalPrice += relatedProduct.Quantity * relatedProductPromotion.PromotionPrice;
-                                    totalPrice += (productQuantity - relatedProduct.Quantity) * originalProduct.Price;
-                                }
-                                else if (productQuantity < relatedProduct.Quantity)
-                                {
-                                    totalPrice += productQuantity * relatedProductPromotion.PromotionPrice;
-                                    totalPrice += (relatedProduct.Quantity - productQuantity) * relatedOriginalProduct.Price;
+                                    if (relatedProduct != null &&
+                                        relatedProduct.Quantity > 0)
+                                    {
+                                        if (productQuantity > relatedProduct.Quantity)
+                                        {
+                                            totalPrice += relatedProduct.Quantity * relatedProductPromotion.PromotionPrice;
+                                            totalPrice += (productQuantity - relatedProduct.Quantity) * originalProduct.Price;
+                                        }
+                                        else if (productQuantity < relatedProduct.Quantity)
+                                        {
+                                            totalPrice += productQuantity * relatedProductPromotion.PromotionPrice;
+                                            totalPrice += (relatedProduct.Quantity - productQuantity) * relatedOriginalProduct.Price;
+                                        }
+                                        else
+                                        {
+                                            totalPrice += productQuantity * relatedProductPromotion.PromotionPrice;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        totalPrice += productQuantity * originalProduct.Price;
+                                    }
                                 }
                                 else
                                 {
-                                    totalPrice += productQuantity * relatedProductPromotion.PromotionPrice;
+                                    if (relatedProduct != null &&
+                                        relatedProduct.Quantity > 0)
+                                    {
+                                        totalPrice += relatedProduct.Quantity * relatedOriginalProduct.Price;
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                totalPrice += productQuantity * originalProduct.Price;
                             }
                         }
                         else
                         {
-                            if (relatedProduct != null &&
-                                relatedProduct.Quantity > 0)
+                            if (!relatedProductPromotions.Select(k => k.RelatedProductId).ToList().Contains(product.Id) &&
+                                product.Quantity > 0)
                             {
-                                totalPrice += relatedProduct.Quantity * relatedOriginalProduct.Price;
+                                totalPrice += product.Quantity * originalProduct.Price;
                             }
                         }
                     }
                 }
                 else
                 {
-                    if (!relatedProductPromotions.Select(k => k.RelatedProductId ).ToList().Contains(product.Id) &&
-                        product.Quantity > 0)
+                    // In case no product promotions are defined.
+                    foreach (var product in products)
                     {
-                        totalPrice += product.Quantity * originalProduct.Price;
+                        var originalProduct = productList.Where(k => k.Id == product.Id).FirstOrDefault();
+
+                        if (product.Quantity > 0)
+                        {
+                            totalPrice += product.Quantity * originalProduct.Price;
+                        }
                     }
                 }
-            }
+            }            
 
             return totalPrice;
         }
@@ -184,14 +212,14 @@
         }
 
         /// <summary>
-        /// Gets collection of Qunatity Promotions.
+        /// Gets collection of Product Promotions.
         /// </summary>
-        /// <returns>List of Quantity Promotions</returns>
-        private List<QuantityPromotion> GetQuantityPromotions()
+        /// <returns>List of Product Promotions</returns>
+        private List<ProductPromotion> GetProductPromotions()
         {
-            List<QuantityPromotion> quantityPromotions = new List<QuantityPromotion>();
+            List<ProductPromotion> productPromotions = new List<ProductPromotion>();
 
-            quantityPromotions.Add(new QuantityPromotion
+            productPromotions.Add(new ProductPromotion
             {
                 ProductId = 1,
                 PromotionQunatity = 3,
@@ -199,7 +227,7 @@
                 PromotionTypeId = (int)Constants.PromotionType.QuantityPromotion,
             });
 
-            quantityPromotions.Add(new QuantityPromotion
+            productPromotions.Add(new ProductPromotion
             {
                 ProductId = 2,
                 PromotionQunatity = 2,
@@ -207,29 +235,7 @@
                 PromotionTypeId = (int)Constants.PromotionType.QuantityPromotion,
             });
 
-            return quantityPromotions;
-        }
-
-        /// <summary>
-        /// Gets collection of Percentage Promotions.
-        /// </summary>
-        /// <returns>List of Percentage Promotions</returns>
-        private List<PercentagePromotion> GetPercentagePromotions()
-        {
-            List<PercentagePromotion> percentagePromotions = new List<PercentagePromotion>();
-
-            return percentagePromotions;
-        }
-
-        /// <summary>
-        /// Gets collection of Related Product Promotions.
-        /// </summary>
-        /// <returns>List of Related Product Promotions</returns>
-        private List<RelatedProductPromotion> GetRelatedProductPromotions()
-        {
-            List<RelatedProductPromotion> relatedProductPromotions = new List<RelatedProductPromotion>();
-
-            relatedProductPromotions.Add(new RelatedProductPromotion
+            productPromotions.Add(new ProductPromotion
             {
                 ProductId = 3,
                 RelatedProductId = 4,
@@ -237,7 +243,7 @@
                 PromotionTypeId = (int)Constants.PromotionType.RelatedProductPromotion,
             });
 
-            return relatedProductPromotions;
+            return productPromotions;
         }
 
         #endregion Private Methods

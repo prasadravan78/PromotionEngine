@@ -36,6 +36,26 @@
         /// </summary>
         public DateTime ApplyEndDate { get; set; }
 
+        /// <summary>
+        /// Gets or Sets the PromotionQunatity.
+        /// </summary>
+        public int PromotionQunatity { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the PromotionPrice.
+        /// </summary>
+        public double PromotionPrice { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the RelatedProductId.
+        /// </summary>
+        public int RelatedProductId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the Percentage.
+        /// </summary>
+        public double Percentage { get; set; }
+
         #endregion Properties
     }
 }
