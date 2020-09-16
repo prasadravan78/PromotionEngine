@@ -67,43 +67,55 @@
                 }
                 else if (percentagePromotions.Select(k => k.ProductId).ToList().Contains(product.Id))
                 {
+                    var percentagePromotion = percentagePromotions.Where(k => k.ProductId == product.Id).FirstOrDefault();
 
+                    totalPrice += (product.Quantity / percentagePromotion.PromotionQunatity) * (100 + percentagePromotion.Percentage) / 100;
+                    totalPrice += (product.Quantity % percentagePromotion.PromotionQunatity) * originalProduct.Price;
                 }
                 else if (relatedProductPromotions.Select(k => k.ProductId).ToList().Contains(product.Id))
                 {
                     var relatedProductPromotion = relatedProductPromotions.Where(k => k.ProductId == product.Id).FirstOrDefault();
+                    var relatedOriginalProduct = productList.Where(k => k.Id == relatedProductPromotion.RelatedProductId).FirstOrDefault();
+
                     if (products.Select(k => k.Id).ToList().Contains(relatedProductPromotion.RelatedProductId))
                     {
                         var productQuantity = product.Quantity;
                         var relatedProduct = products.Where(k => k.Id == relatedProductPromotion.RelatedProductId).FirstOrDefault();
 
-                        if (relatedProduct.Quantity > 0)
+                        if (productQuantity > 0)
                         {
-                            if (productQuantity > relatedProduct.Quantity)
+                            if (relatedProduct!=null &&
+                                relatedProduct.Quantity > 0)
                             {
-                                totalPrice += relatedProduct.Quantity * relatedProductPromotion.PromotionPrice;
-                                totalPrice += (productQuantity - relatedProduct.Quantity) * originalProduct.Price;
-                            }
-                            else if (productQuantity < relatedProduct.Quantity)
-                            {
-                                var relatedOriginalProduct = productList.Where(k => k.Id == relatedProductPromotion.RelatedProductId).FirstOrDefault();
-                                totalPrice += productQuantity * relatedProductPromotion.PromotionPrice;
-                                totalPrice += (relatedProduct.Quantity - productQuantity) * relatedOriginalProduct.Price;
+                                if (productQuantity > relatedProduct.Quantity)
+                                {
+                                    totalPrice += relatedProduct.Quantity * relatedProductPromotion.PromotionPrice;
+                                    totalPrice += (productQuantity - relatedProduct.Quantity) * originalProduct.Price;
+                                }
+                                else if (productQuantity < relatedProduct.Quantity)
+                                {                                    
+                                    totalPrice += productQuantity * relatedProductPromotion.PromotionPrice;
+                                    totalPrice += (relatedProduct.Quantity - productQuantity) * relatedOriginalProduct.Price;
+                                }
+                                else
+                                {
+                                    totalPrice += productQuantity * relatedProductPromotion.PromotionPrice;
+                                }
                             }
                             else
                             {
-                                totalPrice += productQuantity * relatedProductPromotion.PromotionPrice;
+                                totalPrice += product.Quantity * originalProduct.Price;
                             }
                         }
                         else
                         {
-                            totalPrice += product.Quantity * originalProduct.Price;
-                        }                        
+                            if (relatedProduct!=null && 
+                                relatedProduct.Quantity > 0)
+                            {
+                                totalPrice += relatedProduct.Quantity * relatedOriginalProduct.Price;
+                            }
+                        }                                              
                     }
-                    //else
-                    //{
-                    //    totalPrice += product.Quantity * originalProduct.Price;
-                    //}
                 }
             }
 
