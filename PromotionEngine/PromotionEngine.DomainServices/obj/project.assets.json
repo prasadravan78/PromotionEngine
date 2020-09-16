@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "PromotionEngine.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/PromotionEngine.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PromotionEngine.Models.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "PromotionEngine.Models/1.0.0": {
+      "type": "project",
+      "path": "../PromotionEngine.Models/PromotionEngine.Models.csproj",
+      "msbuildProject": "../PromotionEngine.Models/PromotionEngine.Models.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "PromotionEngine.Models >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\ravan\\.nuget\\packages\\": {},
@@ -39,7 +58,11 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\ravan\\Documents\\Learnings\\Dot Net Core\\Code\\PromotionEngine\\PromotionEngine\\PromotionEngine.Models\\PromotionEngine.Models.csproj": {
+              "projectPath": "C:\\Users\\ravan\\Documents\\Learnings\\Dot Net Core\\Code\\PromotionEngine\\PromotionEngine\\PromotionEngine.Models\\PromotionEngine.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
