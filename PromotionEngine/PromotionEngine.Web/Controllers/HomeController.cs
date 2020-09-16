@@ -24,6 +24,11 @@
 
         #endregion Member Variables
 
+        #region Constructors
+
+        /// <summary>
+        /// Sets various dependencies.
+        /// </summary>
         public HomeController(ILogger<HomeController> logger,
                               IProductService productService)
         {
@@ -31,6 +36,15 @@
             this.productService = productService;
         }
 
+        #endregion Constructors
+
+        #region Public Methods
+
+        /// <summary>
+        /// Displays products.
+        /// </summary>
+        /// <returns>Index view</returns>
+        [HttpGet]
         public IActionResult Index()
         {
             IndexViewModel indexViewModel = new IndexViewModel();
@@ -40,6 +54,12 @@
             return View(indexViewModel);
         }
 
+
+        /// <summary>
+        /// Gets total price for added products.
+        /// </summary>
+        /// <param name="products">List of products added</param>
+        /// <returns>Json message</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult GetPrice(List<Product> products)
@@ -53,15 +73,29 @@
             return Json(result);
         }
 
+        /// <summary>
+        /// Displays Privacy view.
+        /// </summary>
+        /// <returns>Privacy view</returns>
         public IActionResult Privacy()
         {
             return View();
         }
 
+        /// <summary>
+        /// Displays Error view.
+        /// </summary>
+        /// <returns>Error view</returns>
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        #endregion Public Methods
+
+        #region Private Methods
+
+        #endregion Private Methods
     }
 }
