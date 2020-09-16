@@ -12,19 +12,11 @@ namespace PromotionEngine.DomainServices.Tests
     {
         #region Member Variables
 
-        private readonly IProductService _productService;
+        private IProductService _productService;
 
         #endregion Member Variables
 
         #region Constructors
-
-        /// <summary>
-        /// Initializes dependencies.
-        /// </summary>
-        public ProductTest(IProductService productService)
-        {
-            _productService = productService;
-        }
 
         #endregion Constructors
 
@@ -33,7 +25,7 @@ namespace PromotionEngine.DomainServices.Tests
         [SetUp]
         public void Setup()
         {
-
+            _productService = new ProductService();
         }
 
         /// <summary>
