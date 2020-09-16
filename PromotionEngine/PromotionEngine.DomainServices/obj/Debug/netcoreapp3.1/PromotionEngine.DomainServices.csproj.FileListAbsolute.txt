@@ -10,3 +10,5 @@ C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEn
 C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.DomainServices\bin\Debug\netcoreapp3.1\PromotionEngine.Models.pdb
 C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.DomainServices\obj\Debug\netcoreapp3.1\PromotionEngine.DomainServices.csprojAssemblyReference.cache
 C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.DomainServices\obj\Debug\netcoreapp3.1\PromotionEngine.DomainServices.csproj.CopyComplete
+C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.DomainServices\bin\Debug\netcoreapp3.1\PromotionEngine.Common.dll
+C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.DomainServices\bin\Debug\netcoreapp3.1\PromotionEngine.Common.pdb

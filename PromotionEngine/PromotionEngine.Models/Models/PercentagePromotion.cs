@@ -1,10 +1,10 @@
-﻿namespace PromotionEngine.Models.Models
+﻿namespace PromotionEngine.Models
 {
     using System;
     using System.Collections.Generic;
     using System.Text;
 
-    class PercentagePromotion : ProductPromotion
+    public class PercentagePromotion : ProductPromotion
     {
         #region Properties
 

@@ -1,4 +1,4 @@
-﻿namespace PromotionEngine.Models.Models
+﻿namespace PromotionEngine.Models
 {
     using System;
     using System.Collections.Generic;

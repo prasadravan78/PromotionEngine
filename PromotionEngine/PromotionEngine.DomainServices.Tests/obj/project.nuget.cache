@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/D6zmNXpu6FIt2UHna5L0qaLeQGVNLGF9UkQFqOpM/l+04xirYVwUbe4clQ4DyNbQ26NswfL3+P+YwnJzFoyag==",
+  "dgSpecHash": "uTqB34vPQTyhrC9l5D1T3YVs+7VA7FIxLZ8gB6jFv+zd9bUKBL4NFwFnNURlJdTzoleY7vFEq5FSZMAovyLsOw==",
   "success": true,
   "projectFilePath": "C:\\Users\\ravan\\Documents\\Learnings\\Dot Net Core\\Code\\PromotionEngine\\PromotionEngine\\PromotionEngine.DomainServices.Tests\\PromotionEngine.DomainServices.Tests.csproj",
   "expectedPackageFiles": [

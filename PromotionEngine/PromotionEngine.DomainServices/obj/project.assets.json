@@ -2,6 +2,16 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "PromotionEngine.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/PromotionEngine.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PromotionEngine.Common.dll": {}
+        }
+      },
       "PromotionEngine.Models/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -15,6 +25,11 @@
     }
   },
   "libraries": {
+    "PromotionEngine.Common/1.0.0": {
+      "type": "project",
+      "path": "../PromotionEngine.Common/PromotionEngine.Common.csproj",
+      "msbuildProject": "../PromotionEngine.Common/PromotionEngine.Common.csproj"
+    },
     "PromotionEngine.Models/1.0.0": {
       "type": "project",
       "path": "../PromotionEngine.Models/PromotionEngine.Models.csproj",
@@ -23,6 +38,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
+      "PromotionEngine.Common >= 1.0.0",
       "PromotionEngine.Models >= 1.0.0"
     ]
   },
@@ -59,6 +75,9 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
+            "C:\\Users\\ravan\\Documents\\Learnings\\Dot Net Core\\Code\\PromotionEngine\\PromotionEngine\\PromotionEngine.Common\\PromotionEngine.Common.csproj": {
+              "projectPath": "C:\\Users\\ravan\\Documents\\Learnings\\Dot Net Core\\Code\\PromotionEngine\\PromotionEngine\\PromotionEngine.Common\\PromotionEngine.Common.csproj"
+            },
             "C:\\Users\\ravan\\Documents\\Learnings\\Dot Net Core\\Code\\PromotionEngine\\PromotionEngine\\PromotionEngine.Models\\PromotionEngine.Models.csproj": {
               "projectPath": "C:\\Users\\ravan\\Documents\\Learnings\\Dot Net Core\\Code\\PromotionEngine\\PromotionEngine\\PromotionEngine.Models\\PromotionEngine.Models.csproj"
             }

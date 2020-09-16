@@ -1,26 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using PromotionEngine.Web.Models;
-
-namespace PromotionEngine.Web.Controllers
+﻿namespace PromotionEngine.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+    using PromotionEngine.Web.Models;
+    using PromotionEngine.DomainServices.ProductService;
+    using PromotionEngine.Web.ViewModels;
+
+    /// <summary>
+    /// Provides functionality to display products.
+    /// </summary>
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        #region Member Variables
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ILogger<HomeController> logger;
+        private readonly IProductService productService;
+
+        #endregion Member Variables
+
+        public HomeController(ILogger<HomeController> logger,
+                              IProductService productService)
         {
-            _logger = logger;
+            this.logger = logger;
+            this.productService = productService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IndexViewModel indexViewModel = new IndexViewModel();
+
+            indexViewModel.Products = productService.GetProducts();
+
+            return View(indexViewModel);
         }
 
         public IActionResult Privacy()

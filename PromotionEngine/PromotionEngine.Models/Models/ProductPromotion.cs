@@ -1,4 +1,4 @@
-﻿namespace PromotionEngine.Models.Models
+﻿namespace PromotionEngine.Models
 {
     using System;
     using System.Collections.Generic;
@@ -12,9 +12,19 @@
         #region Properties
 
         /// <summary>
-        /// Gets or Sets the ProductPromotionRelationId.
+        /// Gets or Sets the Id.
         /// </summary>
-        public int ProductPromotionRelationId { get; set; }
+        public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the ProductId.
+        /// </summary>
+        public int ProductId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets the PromotionTypeId.
+        /// </summary>
+        public int PromotionTypeId { get; set; }
 
         /// <summary>
         /// Gets or Sets the ApplyStartDate.

@@ -11,6 +11,12 @@
     public interface IProductService : IDisposable
     {
         /// <summary>
+        /// Gets list of products.
+        /// </summary>
+        /// <returns>List of products</returns>
+        List<Product> GetProducts();
+
+        /// <summary>
         /// Gets total price for the products.
         /// </summary>
         /// <param name="products">List of Products</param>

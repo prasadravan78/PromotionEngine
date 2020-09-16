@@ -6,3 +6,4 @@ C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEn
 C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Common\obj\Debug\netcoreapp3.1\PromotionEngine.Common.csproj.CoreCompileInputs.cache
 C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Common\obj\Debug\netcoreapp3.1\PromotionEngine.Common.dll
 C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Common\obj\Debug\netcoreapp3.1\PromotionEngine.Common.pdb
+C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Common\obj\Debug\netcoreapp3.1\PromotionEngine.Common.csprojAssemblyReference.cache

@@ -1226,10 +1226,21 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
+      "PromotionEngine.Common/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/PromotionEngine.Common.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PromotionEngine.Common.dll": {}
+        }
+      },
       "PromotionEngine.DomainServices/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "PromotionEngine.Common": "1.0.0",
           "PromotionEngine.Models": "1.0.0"
         },
         "compile": {
@@ -4592,6 +4603,11 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "PromotionEngine.Common/1.0.0": {
+      "type": "project",
+      "path": "../PromotionEngine.Common/PromotionEngine.Common.csproj",
+      "msbuildProject": "../PromotionEngine.Common/PromotionEngine.Common.csproj"
     },
     "PromotionEngine.DomainServices/1.0.0": {
       "type": "project",

@@ -34,3 +34,10 @@ C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEn
 C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Web\obj\Debug\netcoreapp3.1\PromotionEngine.Web.pdb
 C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Web\obj\Debug\netcoreapp3.1\PromotionEngine.Web.genruntimeconfig.cache
 C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Web\obj\Debug\netcoreapp3.1\PromotionEngine.Web.csproj.CopyComplete
+C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Web\bin\Debug\netcoreapp3.1\PromotionEngine.Common.dll
+C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Web\bin\Debug\netcoreapp3.1\PromotionEngine.DomainServices.dll
+C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Web\bin\Debug\netcoreapp3.1\PromotionEngine.Models.dll
+C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Web\bin\Debug\netcoreapp3.1\PromotionEngine.DomainServices.pdb
+C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Web\bin\Debug\netcoreapp3.1\PromotionEngine.Common.pdb
+C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Web\bin\Debug\netcoreapp3.1\PromotionEngine.Models.pdb
+C:\Users\ravan\Documents\Learnings\Dot Net Core\Code\PromotionEngine\PromotionEngine\PromotionEngine.Web\obj\Debug\netcoreapp3.1\PromotionEngine.Web.csprojAssemblyReference.cache
