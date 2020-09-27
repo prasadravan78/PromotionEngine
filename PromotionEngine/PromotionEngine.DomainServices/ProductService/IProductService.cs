@@ -6,7 +6,7 @@
     using System.Text;
 
     /// <summary>
-    /// Exposes members to manage master data entities.
+    /// Exposes members to manage product data entities.
     /// </summary>
     public interface IProductService : IDisposable
     {
